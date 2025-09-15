@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", monospace;
+  background: #0a0a0f;
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Animowane tło z gwiazdami */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+.star:nth-child(odd) {
+  animation-delay: 1.5s;
+}
+
+.star:nth-child(3n) {
+  animation-delay: 0.5s;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Główny kontener */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+/* Tytuł gry */
+.game-title {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(45deg, #00ff88, #00ccff, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5),
+      0 0 30px rgba(0, 204, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.8),
+      0 0 40px rgba(0, 204, 255, 0.6);
+  }
+}
+
+/* Okno gry */
+.game-window {
+  width: 800px;
+  height: 600px;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 30, 0.9),
+    rgba(20, 20, 40, 0.9)
+  );
+  border: 2px solid #00ff88;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.game-canvas {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Placeholder tekst w oknie gry */
+.game-placeholder {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  line-height: 1.6;
+}
+
+.game-placeholder .version {
+  color: #00ff88;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.game-placeholder .instructions {
+  font-size: 1rem;
+  margin-top: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Przycisk Play */
+.play-button {
+  margin-top: 2rem;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #00ff88, #00ccff);
+  border: none;
+  border-radius: 25px;
+  color: #000;
+  font-family: "Courier New", monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.play-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6),
+    inset 0 0 30px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #00ffaa, #00ddff);
+}
+
+.play-button:active {
+  transform: scale(0.98);
+}
+@media (max-width: 900px) {
+  .game-window {
+    width: 90vw;
+    height: 70vh;
+  }
+
+  .game-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .game-placeholder {
+    font-size: 1.2rem;
+  }
+}
