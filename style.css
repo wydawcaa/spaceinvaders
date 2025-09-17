@@ -12,7 +12,6 @@ body {
   height: 100vh;
 }
 
-/* Animowane tło z gwiazdami */
 .stars {
   position: fixed;
   top: 0;
@@ -49,7 +48,6 @@ body {
   }
 }
 
-/* Główny kontener */
 .container {
   display: flex;
   flex-direction: column;
@@ -60,7 +58,6 @@ body {
   z-index: 10;
 }
 
-/* Tytuł gry */
 .game-title {
   font-size: 4rem;
   font-weight: bold;
@@ -85,7 +82,6 @@ body {
   }
 }
 
-/* Okno gry */
 .game-window {
   width: 800px;
   height: 600px;
@@ -114,7 +110,6 @@ body {
   overflow: hidden;
 }
 
-/* Placeholder tekst w oknie gry */
 .game-placeholder {
   text-align: center;
   color: rgba(255, 255, 255, 0.7);
@@ -135,7 +130,6 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Przycisk Play */
 .play-button {
   margin-top: 2rem;
   padding: 15px 40px;
