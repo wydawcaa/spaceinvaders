@@ -1,3 +1,17 @@
+/* Definiowanie globalnych zmiennych ułatwia zarządzanie motywem i spójnością */
+:root {
+  --primary-color: #00ff88;
+  --secondary-color: #00ccff;
+  --text-color: #fff;
+  --dark-bg: #0a0a0f;
+  --dark-bg-transparent: rgba(10, 10, 30, 0.9);
+  --dark-bg-transparent-alt: rgba(20, 20, 40, 0.9);
+  --glow-primary: rgba(0, 255, 136, 0.5);
+  --glow-secondary: rgba(0, 204, 255, 0.3);
+  --game-width: 800px;
+  --game-height: 600px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +20,8 @@
 
 body {
   font-family: "Courier New", monospace;
-  background: #0a0a0f;
-  color: #fff;
+  background: var(--dark-bg);
+  color: var(--text-color);
   overflow: hidden;
   height: 100vh;
 }
@@ -23,7 +37,7 @@ body {
 
 .star {
   position: absolute;
-  background: #fff;
+  background: var(--text-color);
   border-radius: 50%;
   animation: twinkle 3s infinite;
 }
@@ -63,18 +77,22 @@ body {
   font-weight: bold;
   text-align: center;
   margin-bottom: 2rem;
-  background: linear-gradient(45deg, #00ff88, #00ccff, #ff6b6b);
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color),
+    #ff6b6b
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  text-shadow: 0 0 20px var(--glow-primary);
   animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5),
-      0 0 30px rgba(0, 204, 255, 0.3);
+    text-shadow: 0 0 20px var(--glow-primary), 0 0 30px var(--glow-secondary);
   }
   to {
     text-shadow: 0 0 30px rgba(0, 255, 136, 0.8),
@@ -83,16 +101,16 @@ body {
 }
 
 .game-window {
-  width: 800px;
-  height: 600px;
+  width: var(--game-width);
+  height: var(--game-height);
   background: linear-gradient(
     135deg,
-    rgba(10, 10, 30, 0.9),
-    rgba(20, 20, 40, 0.9)
+    var(--dark-bg-transparent),
+    var(--dark-bg-transparent-alt)
   );
-  border: 2px solid #00ff88;
+  border: 2px solid var(--primary-color);
   border-radius: 10px;
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px var(--glow-primary), inset 0 0 30px rgba(0, 0, 0, 0.3);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -110,30 +128,14 @@ body {
   overflow: hidden;
 }
 
-.game-placeholder {
-  text-align: center;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.5rem;
-  line-height: 1.6;
-}
-
-.game-placeholder .version {
-  color: #00ff88;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  display: block;
-}
-
-.game-placeholder .instructions {
-  font-size: 1rem;
-  margin-top: 2rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .play-button {
   margin-top: 2rem;
   padding: 15px 40px;
-  background: linear-gradient(135deg, #00ff88, #00ccff);
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   border: none;
   border-radius: 25px;
   color: #000;
@@ -158,12 +160,12 @@ body {
 .play-button:active {
   transform: scale(0.98);
 }
+
 @media (max-width: 900px) {
   .game-window {
     width: 90vw;
     height: 70vh;
   }
-
   .game-title {
     font-size: 3rem;
   }
@@ -172,9 +174,5 @@ body {
 @media (max-width: 600px) {
   .game-title {
     font-size: 2rem;
-  }
-
-  .game-placeholder {
-    font-size: 1.2rem;
   }
 }
