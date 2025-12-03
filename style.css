@@ -41,23 +41,12 @@ body {
   animation: twinkle 3s infinite;
 }
 
-.star:nth-child(odd) {
-  animation-delay: 1.5s;
-}
-
-.star:nth-child(3n) {
-  animation-delay: 0.5s;
-}
+.star:nth-child(odd) { animation-delay: 1.5s; }
+.star:nth-child(3n) { animation-delay: 0.5s; }
 
 @keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 .container {
@@ -84,12 +73,8 @@ body {
 }
 
 @keyframes glow {
-  from {
-    text-shadow: 0 0 20px var(--glow-primary), 0 0 30px var(--glow-secondary);
-  }
-  to {
-    text-shadow: 0 0 30px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 204, 255, 0.6);
-  }
+  from { text-shadow: 0 0 20px var(--glow-primary), 0 0 30px var(--glow-secondary); }
+  to   { text-shadow: 0 0 30px rgba(0,255,136,0.8), 0 0 40px rgba(0,204,255,0.6); }
 }
 
 .game-window {
@@ -98,7 +83,7 @@ body {
   background: linear-gradient(135deg, var(--dark-bg-transparent), var(--dark-bg-transparent-alt));
   border: 2px solid var(--primary-color);
   border-radius: 10px;
-  box-shadow: 0 0 30px var(--glow-primary), inset 0 0 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 30px var(--glow-primary), inset 0 0 30px rgba(0,0,0,0.3);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -127,7 +112,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0,255,136,0.4), inset 0 0 20px rgba(255,255,255,0.1);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -135,17 +120,12 @@ body {
 
 .play-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0,255,136,0.6), inset 0 0 30px rgba(255,255,255,0.2);
   background: linear-gradient(135deg, #00ffaa, #00ddff);
 }
 
-.play-button:active {
-  transform: scale(0.98);
-}
-
-.play-button.hidden {
-  display: none;
-}
+.play-button:active { transform: scale(0.98); }
+.play-button.hidden { display: none; }
 
 .player-ship {
   position: absolute;
@@ -154,12 +134,7 @@ body {
   bottom: 20px;
   transition: none;
 }
-
-.player-ship svg {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 0 10px var(--primary-color));
-}
+.player-ship svg { width: 100%; height: 100%; filter: drop-shadow(0 0 10px var(--primary-color)); }
 
 .bullet {
   position: absolute;
@@ -170,18 +145,43 @@ body {
   box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--glow-primary);
 }
 
-@media (max-width: 900px) {
-  .game-window {
-    width: 90vw;
-    height: 70vh;
-  }
-  .game-title {
-    font-size: 3rem;
-  }
+.enemy {
+  position: absolute;
+  width: 50px;
+  height: 40px;
+  transition: none;
+}
+.enemy svg { width: 100%; height: 100%; filter: drop-shadow(0 0 8px #ff6b6b); }
+
+.explosion {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff6b6b, #ff9b4a, transparent);
+  animation: explode 0.5s ease-out forwards;
+  pointer-events: none;
 }
 
+@keyframes explode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.score-display {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  text-shadow: 0 0 10px var(--glow-primary);
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .game-window { width: 90vw; height: 70vh; }
+  .game-title { font-size: 3rem; }
+}
 @media (max-width: 600px) {
-  .game-title {
-    font-size: 2rem;
-  }
+  .game-title { font-size: 2rem; }
 }
