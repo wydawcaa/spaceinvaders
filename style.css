@@ -1,4 +1,3 @@
-/* Definiowanie globalnych zmiennych ułatwia zarządzanie motywem i spójnością */
 :root {
   --primary-color: #00ff88;
   --secondary-color: #00ccff;
@@ -51,8 +50,7 @@ body {
 }
 
 @keyframes twinkle {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -77,12 +75,7 @@ body {
   font-weight: bold;
   text-align: center;
   margin-bottom: 2rem;
-  background: linear-gradient(
-    45deg,
-    var(--primary-color),
-    var(--secondary-color),
-    #ff6b6b
-  );
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), #ff6b6b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,19 +88,14 @@ body {
     text-shadow: 0 0 20px var(--glow-primary), 0 0 30px var(--glow-secondary);
   }
   to {
-    text-shadow: 0 0 30px rgba(0, 255, 136, 0.8),
-      0 0 40px rgba(0, 204, 255, 0.6);
+    text-shadow: 0 0 30px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 204, 255, 0.6);
   }
 }
 
 .game-window {
   width: var(--game-width);
   height: var(--game-height);
-  background: linear-gradient(
-    135deg,
-    var(--dark-bg-transparent),
-    var(--dark-bg-transparent-alt)
-  );
+  background: linear-gradient(135deg, var(--dark-bg-transparent), var(--dark-bg-transparent-alt));
   border: 2px solid var(--primary-color);
   border-radius: 10px;
   box-shadow: 0 0 30px var(--glow-primary), inset 0 0 30px rgba(0, 0, 0, 0.3);
@@ -131,11 +119,7 @@ body {
 .play-button {
   margin-top: 2rem;
   padding: 15px 40px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border: none;
   border-radius: 25px;
   color: #000;
@@ -143,8 +127,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4),
-    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -152,13 +135,30 @@ body {
 
 .play-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6),
-    inset 0 0 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.2);
   background: linear-gradient(135deg, #00ffaa, #00ddff);
 }
 
 .play-button:active {
   transform: scale(0.98);
+}
+
+.play-button.hidden {
+  display: none;
+}
+
+.player-ship {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  transition: none;
+}
+
+.player-ship svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px var(--primary-color));
 }
 
 @media (max-width: 900px) {

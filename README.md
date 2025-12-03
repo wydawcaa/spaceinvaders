@@ -17,6 +17,6 @@ Skórki statku gracza🚀
 
 🎛 Sterowanie
 
-← / →	Ruch statku w lewo/prawo
+A / D	Ruch statku w lewo/prawo
 Spacja	Strzał
 Esc	Wyjście z gry
