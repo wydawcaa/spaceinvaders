@@ -851,6 +851,8 @@ function initMenu() {
 function handleKeyDown(e) {
   keysPressed[e.key] = true;
   if (e.key === ' ' || e.code === 'Space') { e.preventDefault(); shootBullet(); }
+  // TC-13 BUGFIX: Escape key was documented in README but not implemented
+  if (e.key === 'Escape' && gameActive) { restartGame(); }
 }
 
 function handleKeyUp(e) { keysPressed[e.key] = false; }
